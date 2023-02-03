@@ -1,1 +1,15 @@
 GET http://localhost:3000/lists
+
+###
+GET http://localhost:3000/lists/2
+
+###
+POST http://localhost:3000/lists
+Content-Type: application/json
+
+{
+  "name": "Kamila Vieira"
+}
+
+### Fake api
+GET http://localhost:8000/lists
