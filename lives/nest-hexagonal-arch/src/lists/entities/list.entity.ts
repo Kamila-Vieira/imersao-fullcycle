@@ -1,3 +1,5 @@
+// Serve para a validação de regras de negócio
+
 export class List {
   id: number;
   name: string;

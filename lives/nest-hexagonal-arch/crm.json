@@ -3,6 +3,10 @@
     {
       "name": "My list",
       "id": 1
+    },
+    {
+      "name": "My list",
+      "id": 2
     }
   ]
 }

@@ -1,7 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
+import EventEmitter from 'events';
 import { CreateListDto } from './dto/create-list.dto';
 import { UpdateListDto } from './dto/update-list.dto';
 import { List } from './entities/list.entity';
+import { ListCreatedEvent } from './events/list-created-event';
 import { ListGatewayInterface } from './gateways/list-gateway-interface';
 
 //DTO - Data Transfer Object (Objeto de transferência de dados)
@@ -10,14 +12,14 @@ export class ListsService {
   constructor(
     @Inject('ListPersistenceGateway')
     private listPersistenceGateway: ListGatewayInterface, // Porta para o ListGatewaySequelize
-    @Inject('ListIntegrationGateway')
-    private listIntegrationGateway: ListGatewayInterface,
+    @Inject('EventEmitter')
+    private eventEmitter: EventEmitter,
   ) {}
 
   async create(createListDto: CreateListDto) {
     const list = new List(createListDto.name);
     await this.listPersistenceGateway.create(list);
-    await this.listIntegrationGateway.create(list);
+    this.eventEmitter.emit('list.created', new ListCreatedEvent(list));
     return list;
   }
 

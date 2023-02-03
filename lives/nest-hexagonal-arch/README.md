@@ -1,5 +1,7 @@
 ## Aplicação Hexagonal com nestjs
 
+[Arquitetura Hexagonal](https://alistair.cockburn.us/hexagonal-architecture/)
+
 ### Comandos úteis
 
 - Criar nova aplicação:
@@ -12,9 +14,4 @@ nest new <nome da aplicação>
 nest generate resource
 
 # será solicitado nome do recurso no plural. ex.: lists
-````
-
-- Instalar dependências para o Sequelize:
-````bash
-npm i sequelize sequelize-typescript sqlite3 @nestjs/sequelize
 ````
