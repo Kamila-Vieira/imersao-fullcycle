@@ -1,4 +1,4 @@
-## Comunicação assíncrona com Apache Kafka
+## Live Comunicação assíncrona com Apache Kafka
 
 https://kafka.apache.org/
 

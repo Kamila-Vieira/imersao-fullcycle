@@ -1,4 +1,4 @@
-## Aplicação Hexagonal com nestjs
+## Live Arquitetura Hexagonal com Nest.js
 
 [Arquitetura Hexagonal](https://alistair.cockburn.us/hexagonal-architecture/)
 
