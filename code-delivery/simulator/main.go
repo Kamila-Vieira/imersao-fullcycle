@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/codeedu/imersaofsfc2-simulator/application/route"
+	"github.com/Kamila-Vieira/imersao-fullcycle/tree/main/code-delivery/simulator/application/route"
 )
 
 func main(){
