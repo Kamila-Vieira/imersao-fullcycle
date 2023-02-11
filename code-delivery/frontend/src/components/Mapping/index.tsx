@@ -1,55 +1,33 @@
-import { Grid, Select, MenuItem, Button } from "@material-ui/core";
-import { useState, useEffect, FormEvent, useCallback } from "react";
-import { Route } from "../../util/models";
+import { Grid } from "@material-ui/core";
+import { useEffect, FunctionComponent } from "react";
 
-interface Props {}
-const API_URL = process.env.REACT_APP_API_URL;
+import { useRouteContext } from "../../context/RouteProvider";
+import { getCurrentPosition, googleMapsLoader, Map } from "../../utils";
+import { useStyles } from "./styles";
 
-export const Mapping = (props: Props) => {
-  const [routes, setRoutes] = useState<Route[]>([]);
-  const [routeIdSelected, setRouteIdSelected] = useState<string>("");
+export const Mapping: FunctionComponent = () => {
+  const { mapRef } = useRouteContext();
+  const classes = useStyles()
 
   useEffect(() => {
-    fetch(`${API_URL}/routes`)
-      .then((data) => data.json())
-      .then((response) => setRoutes(response));
+    (async () => {
+      const [, position] = await Promise.all([
+        googleMapsLoader.load(),
+        getCurrentPosition({ enableHighAccuracy: true })
+      ])
+
+      const containerMap = document.getElementById('map') as HTMLElement;
+      mapRef.current = new Map(containerMap, {
+        zoom: 15,
+        center: position
+      })
+
+    })()
   }, []);
 
-  const handleStartRoute = useCallback(
-    (event: FormEvent) => {
-      event.preventDefault();
-      console.log("routeIdSelected", routeIdSelected);
-    },
-    [routeIdSelected]
-  );
-
   return (
-    <Grid container>
-      <Grid item xs={12} sm={3}>
-        <form onSubmit={handleStartRoute}>
-          <Select
-            fullWidth
-            displayEmpty
-            value={routeIdSelected}
-            onChange={(event) => setRouteIdSelected(event.target.value + "")}
-          >
-            <MenuItem value="">
-              <em>Selecione uma corrida</em>
-            </MenuItem>
-            {routes.map((route, key) => (
-              <MenuItem key={key} value={route._id}>
-                <em>{route.title}</em>
-              </MenuItem>
-            ))}
-          </Select>
-          <Button type="submit" color="primary" variant="contained">
-            Iniciar uma corrida
-          </Button>
-        </form>
-      </Grid>
-      <Grid item xs={12} sm={9}>
-        <div id="map"></div>
-      </Grid>
+    <Grid item xs={12} sm={9}>
+      <div id="map" className={classes.map} />
     </Grid>
   );
 };

@@ -1,7 +1,5 @@
-export interface Position {
-  lat: number;
-  lng: number;
-}
+import { Position } from './position'
+
 export interface Route {
   _id: string;
   title: string;
