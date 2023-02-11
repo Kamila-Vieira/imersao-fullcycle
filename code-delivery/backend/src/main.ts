@@ -1,9 +1,9 @@
-import { NestFactory } from '@nestjs/core';
-import { Transport } from '@nestjs/microservices';
-import { AppModule } from './app.module';
+import { NestFactory } from "@nestjs/core";
+import { Transport } from "@nestjs/microservices";
+import { AppModule } from "./app.module";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
 
   // Iniciar microsserviços
   app.connectMicroservice({
@@ -15,9 +15,8 @@ async function bootstrap() {
       },
       consumer: {
         groupId:
-          !process.env.KAFKA_CONSUMER_GROUP_ID ||
-          process.env.KAFKA_CONSUMER_GROUP_ID === ''
-            ? 'my-consumer' + Math.random()
+          !process.env.KAFKA_CONSUMER_GROUP_ID || process.env.KAFKA_CONSUMER_GROUP_ID === ""
+            ? "my-consumer" + Math.random()
             : process.env.KAFKA_CONSUMER_GROUP_ID,
       },
     },
