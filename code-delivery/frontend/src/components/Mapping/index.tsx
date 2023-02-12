@@ -1,7 +1,7 @@
 import { Grid } from "@material-ui/core";
 import { useEffect, FunctionComponent } from "react";
 
-import { useRouteContext } from "../../context/RouteProvider";
+import { useRouteContext } from "../../hooks/use-route-context";
 import { getCurrentPosition, googleMapsLoader, Map } from "../../utils";
 import { useStyles } from "./styles";
 

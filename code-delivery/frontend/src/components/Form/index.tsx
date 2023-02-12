@@ -5,7 +5,7 @@ import { useSnackbar } from 'notistack'
 
 import { makeCarIcon, makeMarkerIcon } from "../../utils";
 import { COLORS_TO_RANDOM, DEFAULT_RANDOM_COLOR } from "../../constants";
-import { useRouteContext } from "../../context/RouteProvider";
+import { useRouteContext } from "../../hooks/use-route-context";
 import { RouteExistsError } from "../../errors/route-exists.error";
 import { useStyles } from "./styles";
 import { Navbar } from "../Navbar";
@@ -36,7 +36,7 @@ export const Form: FunctionComponent = () => {
         )
       } catch (error) {
         if (error instanceof RouteExistsError) {
-          enqueueSnackbar(`Rota "${route?.title}" já adicionada, espere finalizar.`, {
+          enqueueSnackbar(`A rota "${route?.title}" já foi adicionada, espere finalizar.`, {
             variant: 'error'
           })
           return
