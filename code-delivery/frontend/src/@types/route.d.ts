@@ -1,6 +1,6 @@
-import { MutableRefObject } from 'react'
-import { Map } from '../utils'
-import { Position } from './position'
+import { MutableRefObject } from "react";
+import { Map } from "../utils";
+import { Position } from "./position";
 
 export interface Route {
   _id: string;
@@ -10,6 +10,7 @@ export interface Route {
 }
 
 export interface RouteContextProps {
-  routes: Route[]
-  mapRef: MutableRefObject<Map | null>
+  routes: Route[];
+  mapRef: MutableRefObject<Map | null>;
+  socketIORef: MutableRefObject<SocketIOClient.Socket | null>;
 }

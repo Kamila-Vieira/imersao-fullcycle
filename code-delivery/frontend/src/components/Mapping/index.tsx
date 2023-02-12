@@ -23,7 +23,7 @@ export const Mapping: FunctionComponent = () => {
       })
 
     })()
-  }, []);
+  }, [mapRef]);
 
   return (
     <Grid item xs={12} sm={9}>

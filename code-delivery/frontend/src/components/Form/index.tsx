@@ -1,26 +1,26 @@
 import { FunctionComponent, useCallback, FormEvent, useState } from "react";
 import { Grid, Select, MenuItem, Button } from "@material-ui/core";
-import { sample, shuffle } from 'lodash'
 import { useSnackbar } from 'notistack'
 
-import { makeCarIcon, makeMarkerIcon } from "../../utils";
-import { COLORS_TO_RANDOM, DEFAULT_RANDOM_COLOR } from "../../constants";
 import { useRouteContext } from "../../hooks/use-route-context";
+import { generateRandomColor, makeCarIcon, makeMarkerIcon } from "../../utils";
+
 import { RouteExistsError } from "../../errors/route-exists.error";
-import { useStyles } from "./styles";
 import { Navbar } from "../Navbar";
+
+import { useStyles } from "./styles";
 
 export const Form: FunctionComponent = () => {
   const [routeIdSelected, setRouteIdSelected] = useState<string>("");
   const { enqueueSnackbar } = useSnackbar();
-  const { routes, mapRef } = useRouteContext();
+  const { routes, mapRef, socketIORef } = useRouteContext();
   const classes = useStyles()
 
   const handleStartRoute = useCallback(
     (event: FormEvent) => {
       event.preventDefault();
       const route = routes.find(route => route._id === routeIdSelected)
-      const color = sample(shuffle(COLORS_TO_RANDOM)) || DEFAULT_RANDOM_COLOR;
+      const color = generateRandomColor()
       try {
         mapRef.current?.addRoute(routeIdSelected,
           {
@@ -33,7 +33,10 @@ export const Form: FunctionComponent = () => {
               icon: makeMarkerIcon(color)
             }
           }
-        )
+        );
+        socketIORef.current?.emit("new-direction", {
+          routeId: routeIdSelected,
+        });
       } catch (error) {
         if (error instanceof RouteExistsError) {
           enqueueSnackbar(`A rota "${route?.title}" já foi adicionada, espere finalizar.`, {
@@ -44,7 +47,7 @@ export const Form: FunctionComponent = () => {
         throw Error;
       }
     },
-    [routeIdSelected, routes, enqueueSnackbar]
+    [routes, routeIdSelected, mapRef, socketIORef, enqueueSnackbar]
   );
 
   return (
