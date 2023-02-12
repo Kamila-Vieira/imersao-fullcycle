@@ -1,4 +1,4 @@
-module github.com/Kamila-Vieira/imersao-fullcycle/tree/main/code-delivery/simulator
+module github.com/Kamila-Vieira/imersao-fullcycle/code-delivery/simulator
 
 go 1.16
 

@@ -7,10 +7,6 @@ import (
 	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
 )
 
-type KafkaProducer struct {
-	MsgChan chan *ckafka.Message
-}
-
 func NewKafkaProducer() *ckafka.Producer {
 	configMap := &ckafka.ConfigMap{
 		"bootstrap.servers": os.Getenv("KafkaBootstrapServers"),
