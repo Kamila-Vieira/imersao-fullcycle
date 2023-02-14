@@ -1,0 +1,81 @@
+POST route.new-position/_delete_by_query?conflicts=proceed
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+POST route.new-direction/_delete_by_query?conflicts=proceed
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+
+PUT route.new-position
+{
+  "mappings": {
+    "properties": {
+      "clientId": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "routeId": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+       "timestamp": {
+        "type": "date"
+      },
+      "finished": {
+        "type": "boolean"
+      },
+      "position": {
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+PUT route.new-direction
+{
+  "mappings": {
+    "properties": {
+      "clientId": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "routeId": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+       "timestamp": {
+        "type": "date"
+      }
+    }
+  }
+}
+
+# {"clientId": "a", "routeId": "1"}
+# {"clientId": "b", "routeId": "2"}
+# {"clientId": "c", "routeId": "3"}
+# {"clientId": "d", "routeId": "3"}
+# {"clientId": "e", "routeId": "2"}
+# {"clientId": "f", "routeId": "2"} 
