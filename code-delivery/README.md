@@ -34,3 +34,15 @@
 - Elasticsearch & Kibana
 - Docker e Kubernetes
 - Istio, Kiali, Prometheus & Grafana
+
+### Links úteis:
+- Docker:
+  - [Docker Hub](https://hub.docker.com/)
+  
+- Kafka:
+  - [Confluent Cloud](https://confluent.cloud/)
+  
+- Kubernetes:
+  - [Google Cloud platform](https://console.cloud.google.com/kubernetes/)
+  - [Download Kubectl](https://kubernetes.io/docs/tasks/tools/)
+  - [GCloud sdk](https://cloud.google.com/sdk/docs/install?hl=pt-br)
