@@ -1,18 +1,20 @@
+# resetar dados do tópico route.new-position
 POST route.new-position/_delete_by_query?conflicts=proceed
 {
   "query": {
     "match_all": {}
   }
 }
-
+###
+# resetar dados do tópico route.new-direction
 POST route.new-direction/_delete_by_query?conflicts=proceed
 {
   "query": {
     "match_all": {}
   }
 }
-
-
+###
+# Criar indice route.new-position
 PUT route.new-position
 {
   "mappings": {
@@ -45,7 +47,8 @@ PUT route.new-position
     }
   }
 }
-
+###
+# Criar indice route.new-direction
 PUT route.new-direction
 {
   "mappings": {
@@ -72,10 +75,3 @@ PUT route.new-direction
     }
   }
 }
-
-# {"clientId": "a", "routeId": "1"}
-# {"clientId": "b", "routeId": "2"}
-# {"clientId": "c", "routeId": "3"}
-# {"clientId": "d", "routeId": "3"}
-# {"clientId": "e", "routeId": "2"}
-# {"clientId": "f", "routeId": "2"} 
