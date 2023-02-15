@@ -28,12 +28,12 @@ sasl.password=
 ````
 
 3. Criar a imagem do simulador:
-````.env
+````bash
 docker build -t kamisvsa/code-delivery-simulator -f Dockerfile.prod .
 ````
 
 4. Subir imagem para o docker hub:
-````.env
+````bash
 docker push kamisvsa/code-delivery-simulator
 ````
 
