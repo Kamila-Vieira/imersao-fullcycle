@@ -1,11 +1,14 @@
-## Code Delivery - Estudo de caso pratico
+# Code Delivery
 
-### O que estou desenvolvendo desenvolvendo?
+## Estudo de caso pratico da aplicação
+
+### O que foi desenvolvido?
 
 - Sistema de entregas que permite visualizar em tempo real o veiculo do entregador;
 - Há a possibilidade de múltiplos entregadores simultâneos;
 - Serviço simulador que enviará a posição em tempo real de cada entregador;
 - Os dados de cada entrega, bem como as posições, serão armazenadas no Elasticsearch para futuras analises.
+
 
 ### Alguns desafios
 
@@ -21,23 +24,27 @@
 
 **Solução**: Trabalharemos com websockets. O backend recebera os dados do simulador, e enviar as posições para o frontend via websocket.
 
+
 ### Dinâmica do sistema
 
 <img src="./screenshots/dinamica.png" width="100%"/>
 
-### Tecnologias a serem utilizadas
+
+### Tecnologias utilizadas
 
 - Simulador: Golang
-- Backend: Nest.js & Mongo
-- Frontend: React
+- Backend: Nest.js com Typescript, Mongodb, Websockets e socket.io
+- Frontend: React com Typescript
+- Docker no Wsl 
 - Kafka e Kafka connect
 - Elasticsearch & Kibana
-- Docker e Kubernetes
-- Istio, Kiali, Prometheus & Grafana
+- Deploy com Kubernetes
+
 
 ### Links úteis:
 
 - Docker:
+  - [Docker no WSL](https://github.com/codeedu/wsl2-docker-quickstart#docker-engine-docker-nativo-diretamente-instalado-no-wsl2)
   - [Docker Hub](https://hub.docker.com/)
   
 - Kafka:
