@@ -36,6 +36,7 @@
 - Istio, Kiali, Prometheus & Grafana
 
 ### Links úteis:
+
 - Docker:
   - [Docker Hub](https://hub.docker.com/)
   
@@ -46,3 +47,4 @@
   - [Google Cloud platform](https://console.cloud.google.com/kubernetes/)
   - [Download Kubectl](https://kubernetes.io/docs/tasks/tools/)
   - [GCloud sdk](https://cloud.google.com/sdk/docs/install?hl=pt-br)
+  - [Bitnami helm charts MongoDB](https://github.com/bitnami/charts/tree/main/bitnami/mongodb)

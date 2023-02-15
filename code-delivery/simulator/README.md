@@ -58,6 +58,6 @@ kubectl get configmap
 kubectl apply -f k8s/simulator/deploy.yaml
 # Verificar status dos containers
 kubectl get pods
-# Verificar logs do container
-kubectl logs simulator-8698754788-27fgk # kubectl logs <nome do container>
+# Verificar logs do pod
+kubectl logs simulator-8698754788-27fgk # kubectl logs <nome do pod>
 ```
